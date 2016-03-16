@@ -1,0 +1,249 @@
+/// Slightly lighten a color
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function tint($color, $percentage) {
+  @return mix($color, white, $percentage);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function shade($color, $percentage) {
+  @return mix($color, black, $percentage);
+}
+
+@mixin color-reset {
+  [class*="-title"],
+  [class*="-subtitle"],
+  [class*="-text"] {
+    color: inherit !important;
+  }
+}
+
+// "Cabernet" Theme Color
+@mixin cabernet($name) {
+  
+  // Primary Color
+  $primary: #6d0a0a;
+  $primary-light: lighten($primary, 10%);
+  $primary-heavy: darken($primary, 8%);
+  $primary-alt: #99756b;
+  
+  // Secondary Color
+  $secondary: #C1AFA3;
+  $secondary-light: lighten($secondary, 20%);
+  $secondary-heavy: darken($secondary, 20%);
+  
+  // Accent Colors
+  $accent-blue: #0087A4;
+  $accent-green: #638985;
+  $accent-tan: #F4EADE;
+  $accent-brown: #5E2008;
+  
+  
+  // General Elements
+  $border: $primary-light;
+  $text: $primary-heavy;
+  
+  // Links
+  $link: $primary-light;
+  
+  // Buttons
+  $btn-primary: $primary;
+  $btn-secondary: $secondary;
+  
+  
+  // Parent Wrapper
+  .#{$name} {
+    
+    color: $text;
+    
+    // Headlines
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6, {
+      
+    }
+    
+    
+    // Links
+    a {
+      
+      &:hover,
+      &:focus {
+        color: lighten($link, 10%);
+      }
+      &:active {
+        color: darken($link, 10%);
+      }
+    }
+    
+    // Subtitle    
+    [class*="-subtitle"] {
+      color: $secondary;
+    }
+    
+    
+     // Button Primary
+     
+    .btn-primary {
+      background-color: lighten($accent-brown, 15%);
+      color: white;
+      &:hover,
+      &:focus {
+        background-color: lighten($btn-primary, 10%);
+        color: white;
+      }
+      &:active {
+        background-color: darken($btn-primary, 10%);
+        color: white;
+      }
+    }
+    
+    // Button Secondary
+    
+    .btn-secondary {
+      background-color: $primary;
+      color: white;
+      &:hover,
+      &:focus {
+        background-color: lighten($btn-secondary, 10%);
+        color: white;
+      }
+      &:active {
+        background-color: darken($btn-secondary, 10%);
+        color: white;
+      }
+    }
+    
+    // Site Content
+    
+    .site-content {
+      background-color: lighten($accent-tan, 5%);
+    }
+    
+    // Site Header
+    
+    .site-header {
+      background-color: lighten($accent-tan, 7%);
+      a {
+        
+      }
+    }
+    
+    // Sidebar Main
+    
+    .sidebar-main {
+      background-color: $accent-tan;
+    }
+    
+    // Mobile Nav
+    
+    .nav-toggle {
+      background-color: #DDD;
+      &:before,
+      &.active {
+        color: $text;
+      }
+    }
+    
+    // Main Nav
+    
+    .nav-collapse > ul > li a {
+      background-color: $accent-tan;
+      color: $primary;
+    }
+    
+    .nav-collapse .sub-menu > li > a {
+      background-color: darken($accent-tan, 5%);
+    }
+    
+    .nav-collapse .sub-menu {
+  		li:hover > a {
+    		//background-color: #CCC;
+    		//color: white;
+  		} 
+  		.dropdown-toggle {
+    		.icon {
+      		fill: $primary;
+    		}
+      	&.toggled  {
+          //background-color: #AAA;
+        }
+    	}      	
+    	.active {
+    		a {
+    			color: #222;				
+    		}
+    	}
+    }
+    
+    // 800
+    @media (min-width: 800px) {
+      .nav-collapse > ul > li a {
+        background-color: transparent;
+      }
+      .nav-collapse .sub-menu > li > a {
+        background-color: $primary;
+        color: white;
+        &:hover {
+          background-color: darken($primary, 7%);
+        }
+      }
+    }
+    
+    // Hero Banner
+    
+    .hero-banner {
+      @include color-reset;
+      background-color: darken($accent-tan, 10%);
+    }
+    
+    
+    // CTA Row
+    
+    .CTA-row {
+      background-color: $accent-tan;
+    }
+    
+    
+    // Social Media Icons
+    
+    .soc-media-links a {
+      color: $primary;
+    }
+    
+    // Feature Media Detail
+    
+    .feature-media-detail {
+      @include color-reset;
+      background-color: $primary-heavy;
+      color: white;
+      a {
+        color: white;
+      }
+    }
+    
+    // Contact Banner
+    
+    .contact-banner {
+      @include color-reset;
+      background-color: darken($accent-brown, 10%);
+      color: white;
+      a {
+        color: white;
+      }
+    }
+    
+   // *** END *** // 
+  }
+}
+
+@include cabernet(ContentBody);

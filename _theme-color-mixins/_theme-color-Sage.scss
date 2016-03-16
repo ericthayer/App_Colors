@@ -1,0 +1,113 @@
+// "Sage" Theme Color
+@mixin sage($name) {
+  
+  // Primary Color
+  $primary: #AABB22;
+  $primary-light: lighten($primary, 20%);
+  $primary-heavy: darken($primary, 20%);
+  
+  // Secondary Color
+  $secondary: #BBBBAA;
+  $secondary-light: lighten($secondary, 20%);
+  $secondary-heavy: darken($secondary, 20%);
+  
+  // General Elements
+  $border: $primary-light;
+  $text: $primary-heavy;
+  
+  // Links
+  $link: #88CC00;
+  
+  // Buttons
+  $btn-primary: $primary;
+  $btn-secondary: $secondary-heavy;
+  
+  
+  // Parent Wrapper
+  .#{$name} {
+    
+    // Headlines
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6, {
+      color: $text;
+    }
+    
+    // Site Header
+    .site-header {
+      background-color: $secondary-light;
+      a {
+        color: $primary-heavy;
+      }
+    }
+    
+    // Hero Banner
+    .hero-banner {
+      background-color: $secondary-heavy;
+      color: white;
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6, {
+      color: white;
+      }
+      .btn-primary {
+        background-color: $primary;
+      }
+      .btn-secondary {
+        background-color: $secondary;
+      }
+    }
+    
+    // Subtitle    
+    [class*="-subtitle"] {
+      color: $secondary;
+    }
+    
+    // Links
+    a {
+      color: $link;
+      &:hover,
+      &:focus {
+        background-color: lighten($link, 10%);
+      }
+      &:active {
+        background-color: darken($link, 10%);
+      }
+    }
+    
+    // Button Primary
+    .btn-primary {
+      background-color: $btn-primary;
+      color: white;
+      &:hover,
+      &:focus {
+        background-color: lighten($btn-primary, 10%);
+      }
+      &:active {
+        background-color: darken($btn-primary, 10%);
+      }
+    }
+    
+    // Button Secondary
+    .btn-secondary {
+      background-color: $btn-secondary;
+      color: white;
+      &:hover,
+      &:focus {
+        background-color: lighten($btn-secondary, 10%);
+      }
+      &:active {
+        background-color: darken($btn-secondary, 10%);
+      }
+    }
+    
+    
+   // *** END *** // 
+  }
+}

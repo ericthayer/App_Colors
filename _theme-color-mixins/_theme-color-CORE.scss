@@ -1,0 +1,320 @@
+/// Slightly lighten a color
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function tint($color, $percentage) {
+  @return mix($color, white, $percentage);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function shade($color, $percentage) {
+  @return mix($color, black, $percentage);
+}
+
+@mixin color-reset {
+  [class*="-title"],
+  [class*="-subtitle"],
+  [class*="-text"] {
+    color: inherit !important;
+  }
+}
+
+// "CORE" Theme Color
+@mixin CORE($name) {
+  
+  // Primary Color
+  $primary: #2176BB;
+  $primary-light: lighten($primary, 25%);
+  $primary-heavy: #1A5F93;
+  $primary-alt: #558AB4;
+  
+  // Gradients - Try to apply this in 2.0
+  $gradient-primary: linear-gradient(to bottom, #1e5799 0%,#2989d8 0%,#2176bb 0%,#66a9dd 100%);
+  
+  // Secondary Color
+  $secondary: #CCC;
+  $secondary-light: #EEE;
+  $secondary-heavy: #AAA;
+  
+  // Gradients - Try to apply this in 2.0
+  $gradient-secondary-45deg: linear-gradient(45deg, #1e5799 0%,#2989d8 0%,#cccccc 0%,#eeeeee 100%);
+  
+  // Accent Colors
+  $accent-blue: #900;
+  $accent-grey: #F4EADE;
+
+  // General Elements
+  $border: $primary-light;
+  $text: #333;
+  
+  // Links
+  $link: $primary;
+  
+  // Buttons
+  $btn-primary: $primary;
+  $btn-secondary: #72B4DB;
+  
+  
+  // Parent Wrapper
+  .#{$name} {    
+    
+    color: $text;    
+    
+    // ********** Typography ********** //
+    
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6, {
+   
+    }
+    
+    p,
+    [class*="-text"] {
+      
+    }
+    
+    // Links
+    a {
+      //color: $link;
+      &:hover,
+      &:focus {
+        color: lighten($link, 10%);
+      }
+      &:active {
+        color: darken($link, 10%);
+      }
+    }
+    
+    // Subtitle    
+    [class*="-subtitle"] {
+      color: $secondary-heavy;
+    }
+    
+    // ********** Buttons ********** //
+        
+    button,
+    .btn,
+    [class*="btn"] {
+      background-color: $primary;
+      color: white;
+      a {
+        //color: white;
+      }
+      &:hover,
+      &:focus {
+        background-color: lighten($btn-primary, 10%);
+        //color: white;
+      }     
+      &.active {
+        background-color: darken($btn-primary, 15%);
+        //color: white;
+      }
+    }
+    
+    .btn-txt {
+      
+    }
+    
+    .btn-outline {
+      border-color: $secondary;
+    }
+    
+    
+     // Button Primary     
+    .btn-primary {
+      background-color: $btn-primary;
+      //color: white;
+      &:hover,
+      &:focus {
+        background-color: lighten($btn-primary, 10%);
+        //color: white;
+      }
+      &.active {
+        background-color: darken($btn-primary, 15%);
+        //color: white;
+      }
+    }
+    
+    // Button Secondary    
+    .btn-secondary {
+      background-color: $btn-secondary;
+      //color: white;
+      &:hover,
+      &:focus {
+        background-color: lighten($btn-secondary, 10%);
+        //color: white;
+      }
+      &:active {
+        background-color: darken($btn-secondary, 10%);
+        //color: white;
+      }
+    }
+    
+    // ********** Main Nav ********** //
+        
+    .nav-collapse > ul > li a {
+      background-color: #EEE;
+      color: $text;
+    }
+    
+    .nav-collapse .sub-menu > li > a {
+      background-color: #E1E1E1;
+    }
+    
+    .nav-collapse .sub-menu {
+      li > a {
+        //background-color: #CCC;
+  		}
+  		li:hover > a {
+    		background-color: #CCC;
+    		//color: white;
+  		} 
+  		.dropdown-toggle {
+    		background-color: #C9C9C9;
+      	&.toggled  {
+          background-color: #AAA;
+        }
+    	}      	
+    	.dropdown-toggle {
+      	&.toggled  {
+          background-color: #CCC;
+        }
+    	}
+    	.active {
+    		a {
+    			color: #222;				
+    		}
+    	}
+    }
+    
+    // ********** Mobile Nav ********** //
+    
+    // < 800
+    @media (max-width: 800px) {
+      .dropdown-toggle {
+        background-color: #CCC;       
+        &:hover,
+        &:focus,
+        &:active {
+          background-color: #DDD;
+        }
+        &.toggled  {
+          background-color: #D9D9D9;
+        }
+      }
+    }
+    
+    // Nav Toggle    
+    .nav-toggle {
+      &:before {
+        background: #DDD;
+        color: #667;
+      }
+    }
+    
+    // Nav Toggle Active
+    .nav-toggle.active {
+      width: 100%;    
+      &:before {
+      	background: #EEE;
+      	color: darkRed;
+      }
+  	}    
+    
+    // 800
+    @media (min-width: 800px) {
+      .nav-collapse > ul > li > a {
+        background: none;
+        &:hover {
+          
+        }
+      }
+    }
+    
+    // ********** Site Content ********** //
+        
+    .site-content {
+      
+    }
+    
+    // ********** Site Header ********** //
+       
+    .site-header {
+      //background-color: lighten($accent-grey, 7%);
+      a {
+        //color: $primary;
+      }
+    }
+    
+    // Sidebar Main    
+    .sidebar-main {
+      background-color: $secondary-light;
+    }
+    
+    // ********** Content Posts ********** //
+    
+    // CTA Row    
+    .CTA-row {
+      background-color: $secondary-light;
+    }
+    
+    // Feature Media Detail    
+    .feature-media-detail {
+      @include color-reset;
+      background-color: $primary-heavy;
+      color: white;
+      a {
+        color: white;
+      }
+    }
+    
+    // ********** Banners ********** //    
+    
+    // Hero Banner   
+    .hero-banner {
+      //color: white;
+      @include color-reset;
+      background-color: $secondary;
+    }
+    
+    // Contact Banner    
+    .contact-banner {
+      @include color-reset;
+      a {
+        
+      }
+    }
+    
+    // ********** Modules ********** //
+    
+    // Social Media Icons    
+    .soc-media-icons a {
+      color: $primary;
+    }
+    
+    
+    .testimonial-block {
+      
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   // *** END *** // 
+  }
+}
+
+@include CORE(ContentBody);

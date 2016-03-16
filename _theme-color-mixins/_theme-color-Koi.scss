@@ -1,0 +1,107 @@
+// "Koi" Theme Color
+@mixin koi($name) {
+  
+  // Primary Color
+  $primary: #119988;
+  $primary-light: lighten($primary, 20%);
+  $primary-heavy: darken($primary, 20%);
+  
+  // Secondary Color
+  $secondary: #FF0022;
+  $secondary-light: lighten($secondary, 20%);
+  $secondary-heavy: darken($secondary, 20%);
+  
+  // General Elements
+  $border: $primary-light;
+  $text: $primary-heavy;
+  
+  // Links
+  $link: $primary;
+  
+  // Buttons
+  $btn-primary: $primary;
+  $btn-secondary: $secondary;
+ 
+  // Parent Wrapper
+  .#{$name} {
+    
+    // Header Nav
+    .header-nav {
+      a {
+        color: $secondary;
+      }
+      
+    }
+    
+    // Site Logo
+    .site-logo a {
+      color: $primary;
+    }
+    
+    // Main Nav
+    .main-nav li a {
+      color: $text;
+    }
+    
+    // Hero Banner
+    .hero-banner {
+      background-color: lighten(adjust_hue($primary-light, 20), 40%);
+    }
+    
+    // Headlines
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6, {
+      color: $text;
+    }
+    
+    // Subtitle    
+    [class*="-subtitle"] {
+      color: $secondary-light;
+    }
+    
+    // Links
+    a {
+      color: $link;
+      &:hover,
+      &:focus {
+        background-color: lighten($link, 10%);
+      }
+      &:active {
+        background-color: darken($link, 10%);
+      }
+    }
+    
+    // Button Primary
+    .btn-primary {
+      background-color: $btn-primary;
+      color: white;
+      &:hover,
+      &:focus {
+        background-color: lighten($btn-primary, 10%);
+      }
+      &:active {
+        background-color: darken($btn-primary, 10%);
+      }
+    }
+    
+    // Button Secondary
+    .btn-secondary {
+      background-color: $btn-secondary;
+      color: white;
+      &:hover,
+      &:focus {
+        background-color: lighten($btn-secondary, 10%);
+      }
+      &:active {
+        background-color: darken($btn-secondary, 10%);
+      }
+    }
+    
+  }
+}
+
+@include koi(site-wrap);
